@@ -2,7 +2,7 @@
 /**
  * Seaf Auto Load
  */
-Seaf::di('autoLoader')->addNamespace(
+Seaf\Core\Loader\AutoLoader::init()->addNamespace(
     'Seaf\\Component\\Config',
     null,
     dirname(__FILE__).'/Config'
