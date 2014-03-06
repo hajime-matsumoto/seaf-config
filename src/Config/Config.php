@@ -70,6 +70,21 @@ class Config
     {
         $this->env_name = $name;
     }
+
+    /**
+     * {{XXX}}フォーマットで値を取り出す
+     */
+    public function getf ($format) 
+    {
+        return preg_replace_callback (
+            '/\{\{(.+)\}\}/U',
+            function ($m) {
+                return $this->get($m[1], $m[1]);
+            },
+            $format
+        );
+    }
+
 }
 
 class ConfigContainer extends Container
@@ -133,6 +148,7 @@ class ConfigContainer extends Container
         }
         return parent::has($key);
     }
+
 }
 
 class ConfigSection extends ConfigContainer
